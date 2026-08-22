@@ -3,10 +3,16 @@ namespace Pedido;
 
 public class Pedidos
 {
+
     public int Nro {get;set;}
     public string? Obs {get;set;}
-    private Cliente? cliente {get;set;}
+    public Cliente cliente {get;set;}
     public Estado estado {get;set;}
+    
+    public Pedidos()
+    {
+    }
+
 
     public string? VerDireccionCliente()
     {
