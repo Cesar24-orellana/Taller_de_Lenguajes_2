@@ -60,17 +60,15 @@ public class Pedidos
         Console.WriteLine("- - -");
         foreach (var pedido in lista)
         {
-            Console.WriteLine($"Pedido: {pedido.Nro} - Obs: {pedido.Obs} - Estado: {nameof(pedido.estado)}");
-            pedido.VerDatosCliente();
-            pedido.VerDireccionCliente();
+            pedido.MostrarPedido();
         }
     }
 
-    public static void MostrarPedido(Pedidos pedido)
+    public void MostrarPedido()
     {
-        Console.WriteLine($"Pedido: {pedido.Nro} - Obs: {pedido.Obs} - Estado: {nameof(pedido.estado)}");
-        pedido.VerDatosCliente();
-        pedido.VerDireccionCliente();
+        Console.WriteLine($"Pedido: {Nro} - Obs: {Obs} - Estado: {nameof(estado)}");
+        VerDatosCliente();
+        VerDireccionCliente();
     }
 
     public enum Estado

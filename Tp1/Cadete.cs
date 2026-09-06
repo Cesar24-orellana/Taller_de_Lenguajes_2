@@ -7,7 +7,7 @@ public class Cadete
     public string? Nombre{get;set;}
     public string? Direccion{get;set;}
     public double Telefono{get;set;}
-    public List<Pedidos> ListaPedidos{get;set;}
+    public List<Pedidos>? ListaPedidos{get;set;}
     public Cadete(int id, string? nombre, string? direccion, double telefono, List<Pedidos> listaPedidos)
     {
         this.Id = id;
@@ -16,9 +16,7 @@ public class Cadete
         this.Telefono = telefono;
         this.ListaPedidos = listaPedidos;
     }
-    public Cadete()
-    {
-    }
+    public Cadete(){}
 
     public double JornalACobrar()
     {
@@ -49,5 +47,22 @@ public class Cadete
         }
 
         return lista;
+    }
+
+    public static void MostarListaCadetes(List<Cadete> lista)
+    {
+        Console.WriteLine("- - - Lista de Cadetes - - -");
+        Console.WriteLine("- - - -");
+        foreach (var cadete in lista)
+        {
+            cadete.MostrarCadete();
+            Console.WriteLine("- - - -");
+        }
+    }
+
+    public void MostrarCadete()
+    {
+        Console.WriteLine($"Cadete ID: {Id} - Nombre: {Nombre} - Direccion: {Direccion} - Telefono: {Telefono}");
+        Pedidos.MostrarPedidos(ListaPedidos);
     }
 }
