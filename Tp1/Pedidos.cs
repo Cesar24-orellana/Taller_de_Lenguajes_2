@@ -55,6 +55,24 @@ public class Pedidos
         return lista;
     }
 
+    public static void MostrarPedidos(List<Pedidos> lista){
+        Console.WriteLine("- - - Lista de Pedidos - - -");
+        Console.WriteLine("- - -");
+        foreach (var pedido in lista)
+        {
+            Console.WriteLine($"Pedido: {pedido.Nro} - Obs: {pedido.Obs} - Estado: {nameof(pedido.estado)}");
+            pedido.VerDatosCliente();
+            pedido.VerDireccionCliente();
+        }
+    }
+
+    public static void MostrarPedido(Pedidos pedido)
+    {
+        Console.WriteLine($"Pedido: {pedido.Nro} - Obs: {pedido.Obs} - Estado: {nameof(pedido.estado)}");
+        pedido.VerDatosCliente();
+        pedido.VerDireccionCliente();
+    }
+
     public enum Estado
     {
         Entregado,
