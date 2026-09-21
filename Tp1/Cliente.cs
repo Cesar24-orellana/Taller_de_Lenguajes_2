@@ -1,4 +1,4 @@
-namespace Clientes;
+namespace model.Clientes;
 
 public class Cliente
 {

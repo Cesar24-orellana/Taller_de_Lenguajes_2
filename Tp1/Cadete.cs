@@ -1,5 +1,5 @@
-using Pedidos;
-namespace Cadetes;
+using model.Pedidos;
+namespace model.Cadetes;
 
 public class Cadete
 {
@@ -27,7 +27,7 @@ public class Cadete
 
     public void AgregarPedido(Pedido nuevo)
     {
-        ListaPedidos.Add(nuevo);
+        ListaPedidos?.Add(nuevo);
     }
 
     public static List<Cadete> CaargarCadetes(string archivo)
@@ -63,6 +63,6 @@ public class Cadete
     public void MostrarCadete()
     {
         Console.WriteLine($"Cadete ID: {Id} - Nombre: {Nombre} - Direccion: {Direccion} - Telefono: {Telefono}");
-        Pedido.MostrarPedidos(ListaPedidos);
+        Pedido.MostrarPedidos(ListaPedidos ?? new List<Pedido>());
     }
 }

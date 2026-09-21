@@ -1,12 +1,12 @@
-using Clientes;
-namespace Pedidos;
+using model.Clientes;
+namespace model.Pedidos;
 
 public class Pedido
 {
 
     public int Nro {get;set;}
     public string? Obs {get;set;}
-    public Cliente cliente {get;set;}
+    public Cliente? cliente {get;set;}
     public Estado estado {get;set;} = Estado.Pendiente;
     public Pedido(int numPedido, string? obs, Cliente cliente, Estado estado = default)
     {
@@ -20,14 +20,14 @@ public class Pedido
     }
     public string? VerDireccionCliente()
     {
-        return cliente.Direccion;
+        return cliente?.Direccion;
     }
     public void VerDatosCliente()
     {
-        Console.WriteLine("Nombre: " + cliente.Nombre);
-        Console.WriteLine("Direccion: " + cliente.Direccion);
-        Console.WriteLine("Telefono: " + cliente.Telefono);
-        Console.WriteLine("Datos de Referencia de direccion: " + cliente.DatosReferenciaDireccion);
+        Console.WriteLine("Nombre: " + cliente?.Nombre);
+        Console.WriteLine("Direccion: " + cliente?.Direccion);
+        Console.WriteLine("Telefono: " + cliente?.Telefono);
+        Console.WriteLine("Datos de Referencia de direccion: " + cliente?.DatosReferenciaDireccion);
     }
 
     public void CambiarEstado(Estado nuevo)
@@ -61,6 +61,7 @@ public class Pedido
         foreach (var pedido in lista)
         {
             pedido.MostrarPedido();
+            Console.WriteLine("- - - - - - -");
         }
     }
 

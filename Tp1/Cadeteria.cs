@@ -1,6 +1,6 @@
-using Cadetes;
-using Clientes;
-using Pedidos;
+using model.Cadetes;
+using model.Clientes;
+using model.Pedidos;
 
 using System.Globalization;
 namespace model.cadeteria;
@@ -12,7 +12,7 @@ public class Cadeteria
 
     public static void ReasignarPedido(Cadete cadete1, Cadete cadete2, Pedido pedido)
     {
-        cadete1.ListaPedidos.Remove(pedido);
+        cadete1.ListaPedidos?.Remove(pedido);
         cadete2.AgregarPedido(pedido);
     }
 
@@ -39,10 +39,10 @@ public class Cadeteria
         int TotalPedidos = 0;
         double TotalJornal = 0;
         Console.WriteLine("- - - Informe de Jornada - - -");
-        foreach (var cadete in ListaCadetes)
+        foreach (var cadete in ListaCadetes ?? new List<Cadete>())
         {
-            int cantPedidosEntregados = cadete.ListaPedidos.Where(x => x.estado == Pedido.Estado.Entregado).Count();
-            int cantPedidos = cadete.ListaPedidos.Count();
+            int cantPedidosEntregados = cadete.ListaPedidos?.Where(x => x.estado == Pedido.Estado.Entregado).Count() ?? 0;
+            int cantPedidos = cadete.ListaPedidos?.Count() ?? 0;
             double JornalACobrar = cadete.JornalACobrar();
 
             Console.WriteLine($"Cadete: {cadete.Nombre}");
@@ -53,7 +53,7 @@ public class Cadeteria
             TotalPedidos += cantPedidos;
             TotalJornal += JornalACobrar;
         }
-        int cantCadetes = ListaCadetes.Count();
+        int cantCadetes = ListaCadetes?.Count() ?? 0;
         double promedioEntregados = (double)TotalPedidosEntregados / TotalPedidos;
 
         Console.WriteLine(" - - - Total - - -");
