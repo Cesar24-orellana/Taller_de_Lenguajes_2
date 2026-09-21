@@ -1,4 +1,4 @@
-using Pedido;
+using Pedidos;
 namespace Cadetes;
 
 public class Cadete
@@ -7,8 +7,8 @@ public class Cadete
     public string? Nombre{get;set;}
     public string? Direccion{get;set;}
     public double Telefono{get;set;}
-    public List<Pedidos>? ListaPedidos{get;set;}
-    public Cadete(int id, string? nombre, string? direccion, double telefono, List<Pedidos> listaPedidos)
+    public List<Pedido>? ListaPedidos{get;set;}
+    public Cadete(int id, string? nombre, string? direccion, double telefono, List<Pedido> listaPedidos)
     {
         this.Id = id;
         this.Nombre = nombre;
@@ -21,11 +21,11 @@ public class Cadete
     public double JornalACobrar()
     {
         if(ListaPedidos == null) return 0;
-        double CantidadEntregados = ListaPedidos.Where(x => x.estado == Pedidos.Estado.Entregado).Count();
+        double CantidadEntregados = ListaPedidos.Where(x => x.estado == Pedido.Estado.Entregado).Count();
         return CantidadEntregados * 500;
     }
 
-    public void AgregarPedido(Pedidos nuevo)
+    public void AgregarPedido(Pedido nuevo)
     {
         ListaPedidos.Add(nuevo);
     }
@@ -42,7 +42,7 @@ public class Cadete
         for(int i=0; i< (lineas.Length-1); i++)
         {
             var separar = lineas[i+1].Split(',');
-            var cadete = new Cadete(int.Parse(separar[0]), separar[1], separar[2], double.Parse(separar[3]), new List<Pedidos>());
+            var cadete = new Cadete(int.Parse(separar[0]), separar[1], separar[2], double.Parse(separar[3]), new List<Pedido>());
             lista.Add(cadete);
         }
 
@@ -63,6 +63,6 @@ public class Cadete
     public void MostrarCadete()
     {
         Console.WriteLine($"Cadete ID: {Id} - Nombre: {Nombre} - Direccion: {Direccion} - Telefono: {Telefono}");
-        Pedidos.MostrarPedidos(ListaPedidos);
+        Pedido.MostrarPedidos(ListaPedidos);
     }
 }
