@@ -67,7 +67,7 @@ public class Pedido
 
     public void MostrarPedido()
     {
-        Console.WriteLine($"Pedido: {Nro} - Obs: {Obs} - Estado: {nameof(estado)}");
+        Console.WriteLine($"Pedido: {Nro} - Obs: {Obs} - Estado: {estado.ToString()}");
         VerDatosCliente();
         VerDireccionCliente();
     }

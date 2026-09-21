@@ -10,6 +10,14 @@ public class Cadeteria
     public double Telefono{get;set;}
     public List<Cadete>? ListaCadetes{get;set;}
 
+    public Cadeteria(string? nombre, double telefono, List<Cadete>? listaCadetes)
+    {
+        this.Nombre = nombre;
+        this.Telefono = telefono;
+        this.ListaCadetes = listaCadetes;
+    }
+
+
     public static void ReasignarPedido(Cadete cadete1, Cadete cadete2, Pedido pedido)
     {
         cadete1.ListaPedidos?.Remove(pedido);
